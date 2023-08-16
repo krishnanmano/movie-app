@@ -88,7 +88,7 @@ func (t *BookingHandlerTestSuite) TestBookingHandler_GetBooking() {
 	t.engine.GET("/booking", t.bookingHandler.GetBooking)
 	req, _ := http.NewRequest(
 		http.MethodGet,
-		"/booking",
+		"/booking?bookingId=1",
 		nil)
 
 	t.engine.ServeHTTP(t.recorder, req)

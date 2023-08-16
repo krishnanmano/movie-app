@@ -54,7 +54,7 @@ func (t *TicketHandlerTestSuite) TestTicketHandler_GetSeatMatrix() {
 	t.engine.GET("/ticket", t.ticketHandler.GetSeatMatrix)
 	req, _ := http.NewRequest(
 		http.MethodGet,
-		"/ticket",
+		"/ticket?showId=1",
 		nil)
 
 	t.engine.ServeHTTP(t.recorder, req)
