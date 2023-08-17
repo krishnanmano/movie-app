@@ -12,7 +12,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func (h *BaseHandler) CreateMovie(c *gin.Context) {
+func (h *baseHandler) CreateMovie(c *gin.Context) {
 	var movie entity.Movie
 	ctx, cancel := context.WithTimeout(context.Background(), time.Duration(h.config.Context.Timeout)*time.Second)
 	defer cancel()
@@ -31,7 +31,7 @@ func (h *BaseHandler) CreateMovie(c *gin.Context) {
 	response.APIResponse(c, movie, 200, "Movie Created")
 }
 
-func (h *BaseHandler) GetMovies(c *gin.Context) {
+func (h *baseHandler) GetMovies(c *gin.Context) {
 	ctx, cancel := context.WithTimeout(context.Background(), time.Duration(h.config.Context.Timeout)*time.Second)
 	defer cancel()
 	var movies []entity.Movie
@@ -56,7 +56,7 @@ func (h *BaseHandler) GetMovies(c *gin.Context) {
 	response.APIResponse(c, movies, 200, "List of movies")
 }
 
-func (h *BaseHandler) UpdateMovie(c *gin.Context) {
+func (h *baseHandler) UpdateMovie(c *gin.Context) {
 	ctx, cancel := context.WithTimeout(context.Background(), time.Duration(h.config.Context.Timeout)*time.Second)
 	defer cancel()
 
@@ -81,7 +81,7 @@ func (h *BaseHandler) UpdateMovie(c *gin.Context) {
 	response.APIResponse(c, movie, 200, "Updated movie")
 }
 
-func (h *BaseHandler) DeleteMovie(c *gin.Context) {
+func (h *baseHandler) DeleteMovie(c *gin.Context) {
 	movieId := c.Param("movieId")
 	ctx, cancel := context.WithTimeout(context.Background(), time.Duration(h.config.Context.Timeout)*time.Second)
 	defer cancel()

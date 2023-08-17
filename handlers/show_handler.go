@@ -12,7 +12,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func (h *BaseHandler) CreateShow(c *gin.Context) {
+func (h *baseHandler) CreateShow(c *gin.Context) {
 	var show entity.Show
 	ctx, cancel := context.WithTimeout(context.Background(), time.Duration(h.config.Context.Timeout)*time.Second)
 	defer cancel()
@@ -31,7 +31,7 @@ func (h *BaseHandler) CreateShow(c *gin.Context) {
 	response.APIResponse(c, show, 200, "show Created")
 }
 
-func (h *BaseHandler) GetAllShows(c *gin.Context) {
+func (h *baseHandler) GetAllShows(c *gin.Context) {
 	ctx, cancel := context.WithTimeout(context.Background(), time.Duration(h.config.Context.Timeout)*time.Second)
 	defer cancel()
 
@@ -49,7 +49,7 @@ func (h *BaseHandler) GetAllShows(c *gin.Context) {
 	response.APIResponse(c, movies, 200, "List of show")
 }
 
-func (h *BaseHandler) UpdateShow(c *gin.Context) {
+func (h *baseHandler) UpdateShow(c *gin.Context) {
 	ctx, cancel := context.WithTimeout(context.Background(), time.Duration(h.config.Context.Timeout)*time.Second)
 	defer cancel()
 

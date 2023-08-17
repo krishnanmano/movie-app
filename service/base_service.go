@@ -8,17 +8,17 @@ import (
 	"movie_app/models/request"
 )
 
-type BaseService struct {
+type baseService struct {
 	sqliteRepository repository.ISqliteRepository
 }
 
-func NewBaseService(sqliteRepository repository.ISqliteRepository) IBaseService {
-	return &BaseService{
+func NewBaseService(sqliteRepository repository.ISqliteRepository) BaseService {
+	return &baseService{
 		sqliteRepository: sqliteRepository,
 	}
 }
 
-type IBaseService interface {
+type BaseService interface {
 	CreateMovie(ctx context.Context, movie *entity.Movie) error
 	GetMovies(ctx context.Context, movieId string) ([]entity.Movie, error)
 	UpdateMovie(ctx context.Context, movie *entity.Movie, movieId string) error

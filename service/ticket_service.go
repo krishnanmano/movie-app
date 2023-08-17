@@ -6,7 +6,7 @@ import (
 	"strconv"
 )
 
-func (baseSvc *BaseService) GetTicketsByShowId(ctx context.Context, showId string) ([]entity.Ticket, error) {
+func (baseSvc *baseService) GetTicketsByShowId(ctx context.Context, showId string) ([]entity.Ticket, error) {
 	var err error
 	showIdInt, _ := strconv.Atoi(showId)
 	tickets, err := baseSvc.sqliteRepository.GetTicketsByShowId(ctx, uint(showIdInt))

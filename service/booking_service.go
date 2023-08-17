@@ -7,7 +7,7 @@ import (
 	"strconv"
 )
 
-func (baseSvc *BaseService) BookShow(ctx context.Context, bookingRequest request.BookingRequest) (entity.Booking, error) {
+func (baseSvc *baseService) BookShow(ctx context.Context, bookingRequest request.BookingRequest) (entity.Booking, error) {
 	err := baseSvc.sqliteRepository.GetAvailableTickets(ctx, bookingRequest.ShowId)
 	if err != nil {
 		return entity.Booking{}, err
@@ -36,7 +36,7 @@ func (baseSvc *BaseService) BookShow(ctx context.Context, bookingRequest request
 	return booking, nil
 }
 
-func (baseSvc *BaseService) GetBooking(ctx context.Context, bookingId string) (entity.Booking, error) {
+func (baseSvc *baseService) GetBooking(ctx context.Context, bookingId string) (entity.Booking, error) {
 	bookingIdInt, _ := strconv.Atoi(bookingId)
 	booking, err := baseSvc.sqliteRepository.GetBooking(ctx, uint(bookingIdInt))
 	if err != nil {

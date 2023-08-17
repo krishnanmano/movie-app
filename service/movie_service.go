@@ -6,7 +6,7 @@ import (
 	"strconv"
 )
 
-func (baseSvc *BaseService) CreateMovie(ctx context.Context, movie *entity.Movie) error {
+func (baseSvc *baseService) CreateMovie(ctx context.Context, movie *entity.Movie) error {
 
 	err := baseSvc.sqliteRepository.CreateMovie(ctx, movie)
 	if err != nil {
@@ -15,7 +15,7 @@ func (baseSvc *BaseService) CreateMovie(ctx context.Context, movie *entity.Movie
 	return nil
 }
 
-func (baseSvc *BaseService) GetMovies(ctx context.Context, movieId string) ([]entity.Movie, error) {
+func (baseSvc *baseService) GetMovies(ctx context.Context, movieId string) ([]entity.Movie, error) {
 	var movies []entity.Movie
 	var movie entity.Movie
 
@@ -33,7 +33,7 @@ func (baseSvc *BaseService) GetMovies(ctx context.Context, movieId string) ([]en
 	return movies, nil
 }
 
-func (baseSvc *BaseService) UpdateMovie(ctx context.Context, movie *entity.Movie, movieId string) error {
+func (baseSvc *baseService) UpdateMovie(ctx context.Context, movie *entity.Movie, movieId string) error {
 	movieIdInt, _ := strconv.Atoi(movieId)
 	err := baseSvc.sqliteRepository.UpdateMovie(ctx, movie, movieIdInt)
 	if err != nil {
@@ -42,7 +42,7 @@ func (baseSvc *BaseService) UpdateMovie(ctx context.Context, movie *entity.Movie
 	return nil
 }
 
-func (baseSvc *BaseService) DeleteMovie(ctx context.Context, movieId string) error {
+func (baseSvc *baseService) DeleteMovie(ctx context.Context, movieId string) error {
 	movieIdInt, _ := strconv.Atoi(movieId)
 	err := baseSvc.sqliteRepository.DeleteMovie(ctx, movieIdInt)
 	if err != nil {
@@ -51,7 +51,7 @@ func (baseSvc *BaseService) DeleteMovie(ctx context.Context, movieId string) err
 	return nil
 }
 
-func (baseSvc *BaseService) DisplayMoviesByTheatre(ctx context.Context, theatreId string) ([]entity.Movie, error) {
+func (baseSvc *baseService) DisplayMoviesByTheatre(ctx context.Context, theatreId string) ([]entity.Movie, error) {
 	theatreIdInt, _ := strconv.Atoi(theatreId)
 	movies, err := baseSvc.sqliteRepository.DisplayMoviesByTheatre(ctx, theatreIdInt)
 

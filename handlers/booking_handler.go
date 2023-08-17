@@ -12,7 +12,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func (h *BaseHandler) BookShow(c *gin.Context) {
+func (h *baseHandler) BookShow(c *gin.Context) {
 	var bookingRequest request.BookingRequest
 	ctx, cancel := context.WithTimeout(context.Background(), time.Duration(h.config.Context.Timeout)*time.Second)
 	defer cancel()
@@ -41,7 +41,7 @@ func (h *BaseHandler) BookShow(c *gin.Context) {
 	response.APIResponse(c, bookings, 200, "Successfully booked")
 }
 
-func (h *BaseHandler) GetBooking(c *gin.Context) {
+func (h *baseHandler) GetBooking(c *gin.Context) {
 	ctx, cancel := context.WithTimeout(context.Background(), time.Duration(h.config.Context.Timeout)*time.Second)
 	defer cancel()
 

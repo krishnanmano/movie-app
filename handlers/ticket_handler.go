@@ -9,7 +9,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func (h *BaseHandler) GetSeatMatrix(c *gin.Context) {
+func (h *baseHandler) GetSeatMatrix(c *gin.Context) {
 	ctx, cancel := context.WithTimeout(context.Background(), time.Duration(h.config.Context.Timeout)*time.Second)
 	defer cancel()
 	showId := c.Query("showId")

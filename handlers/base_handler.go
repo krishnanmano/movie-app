@@ -7,12 +7,12 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-type BaseHandler struct {
-	BaseSvc service.IBaseService
+type baseHandler struct {
+	BaseSvc service.BaseService
 	config  config.Configuration
 }
 
-type IBaseHandler interface {
+type BaseHandler interface {
 	CreateMovie(c *gin.Context)
 	GetMovies(c *gin.Context)
 	UpdateMovie(c *gin.Context)
@@ -27,8 +27,8 @@ type IBaseHandler interface {
 	GetSeatMatrix(c *gin.Context)
 }
 
-func NewBaseHandler(baseService service.IBaseService, config config.Configuration) IBaseHandler {
-	return &BaseHandler{
+func NewBaseHandler(baseService service.BaseService, config config.Configuration) BaseHandler {
+	return &baseHandler{
 		BaseSvc: baseService,
 		config:  config,
 	}

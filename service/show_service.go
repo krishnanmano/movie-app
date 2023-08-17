@@ -6,7 +6,7 @@ import (
 	"strconv"
 )
 
-func (baseSvc *BaseService) CreateShow(ctx context.Context, show *entity.Show) error {
+func (baseSvc *baseService) CreateShow(ctx context.Context, show *entity.Show) error {
 
 	err := baseSvc.sqliteRepository.CreateShow(ctx, show)
 	if err != nil {
@@ -26,7 +26,7 @@ func (baseSvc *BaseService) CreateShow(ctx context.Context, show *entity.Show) e
 	return nil
 }
 
-func (baseSvc *BaseService) GetShows(ctx context.Context, showName string) ([]entity.Show, error) {
+func (baseSvc *baseService) GetShows(ctx context.Context, showName string) ([]entity.Show, error) {
 	var shows []entity.Show
 	var err error
 
@@ -37,7 +37,7 @@ func (baseSvc *BaseService) GetShows(ctx context.Context, showName string) ([]en
 	return shows, nil
 }
 
-func (baseSvc *BaseService) UpdateShow(ctx context.Context, show *entity.Show, showId string) error {
+func (baseSvc *baseService) UpdateShow(ctx context.Context, show *entity.Show, showId string) error {
 	showIdInt, _ := strconv.Atoi(showId)
 	err := baseSvc.sqliteRepository.UpdateShow(ctx, show, showIdInt)
 	if err != nil {

@@ -6,7 +6,7 @@ import (
 	"strconv"
 )
 
-func (baseSvc *BaseService) CreateTheatre(ctx context.Context, theatre *entity.Theatre) error {
+func (baseSvc *baseService) CreateTheatre(ctx context.Context, theatre *entity.Theatre) error {
 
 	err := baseSvc.sqliteRepository.CreateTheatre(ctx, theatre)
 	if err != nil {
@@ -18,7 +18,7 @@ func (baseSvc *BaseService) CreateTheatre(ctx context.Context, theatre *entity.T
 	return nil
 }
 
-func (baseSvc *BaseService) GetTheatres(ctx context.Context, theatreName string) ([]entity.Theatre, error) {
+func (baseSvc *baseService) GetTheatres(ctx context.Context, theatreName string) ([]entity.Theatre, error) {
 	var theatres []entity.Theatre
 	var err error
 	if theatreName != "" {
@@ -33,7 +33,7 @@ func (baseSvc *BaseService) GetTheatres(ctx context.Context, theatreName string)
 	return theatres, nil
 }
 
-func (baseSvc *BaseService) DisplayTheatreByMovies(ctx context.Context, movieId string) ([]entity.Theatre, error) {
+func (baseSvc *baseService) DisplayTheatreByMovies(ctx context.Context, movieId string) ([]entity.Theatre, error) {
 	movieIdInt, _ := strconv.Atoi(movieId)
 	theatres, err := baseSvc.sqliteRepository.DisplayTheatreByMovies(ctx, movieIdInt)
 

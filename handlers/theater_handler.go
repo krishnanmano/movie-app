@@ -10,7 +10,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func (h *BaseHandler) CreateTheatre(c *gin.Context) {
+func (h *baseHandler) CreateTheatre(c *gin.Context) {
 	var theatre entity.Theatre
 	ctx, cancel := context.WithTimeout(context.Background(), time.Duration(h.config.Context.Timeout)*time.Second)
 	defer cancel()
@@ -29,7 +29,7 @@ func (h *BaseHandler) CreateTheatre(c *gin.Context) {
 	response.APIResponse(c, theatre, 200, "Theatre Created")
 }
 
-func (h *BaseHandler) GetTheatres(c *gin.Context) {
+func (h *baseHandler) GetTheatres(c *gin.Context) {
 	ctx, cancel := context.WithTimeout(context.Background(), time.Duration(h.config.Context.Timeout)*time.Second)
 	defer cancel()
 	var theatres []entity.Theatre
