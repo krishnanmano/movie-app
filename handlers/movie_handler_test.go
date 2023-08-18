@@ -3,7 +3,6 @@ package handlers
 import (
 	"bytes"
 	"encoding/json"
-	"fmt"
 	"github.com/gin-gonic/gin"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
@@ -40,8 +39,6 @@ func TestBaseHandler_CreateMovie(t *testing.T) {
 
 	context.Request = httptest.NewRequest(http.MethodPost, "/movie", bytes.NewReader(movieJson))
 	movieHandler.CreateMovie(context)
-
-	fmt.Println(rec)
 
 	assert.Equal(t, http.StatusOK, rec.Code)
 }

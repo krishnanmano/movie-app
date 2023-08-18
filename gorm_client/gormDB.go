@@ -19,6 +19,8 @@ type IGormDB interface {
 	Connect() IGormDB
 }
 
+var LogLevel = logger.Info
+
 type GormDB struct {
 	client *gorm.DB
 }
@@ -33,10 +35,11 @@ func (db *GormDB) Connect() IGormDB {
 		log.New(os.Stdout, "\r\n", log.LstdFlags), // io writer
 		logger.Config{
 			SlowThreshold: time.Second, // Slow SQL threshold
-			LogLevel:      logger.Info, // Log level
+			LogLevel:      LogLevel,    // Log level
 			Colorful:      false,       // Disable color
 		},
 	)
+
 	sqliteClient, err := gorm.Open(sqlite.Open("movieApp.db"), &gorm.Config{Logger: newLogger})
 	if err != nil {
 		log.Fatal("Failed to initialize database connection.", err.Error())

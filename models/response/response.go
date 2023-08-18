@@ -13,3 +13,9 @@ type Response struct {
 func APIResponse(c *gin.Context, data interface{}, statusCode int, msg string) {
 	c.JSON(statusCode, Response{Status: statusCode, Message: msg, Data: data})
 }
+
+type HttpResp[T any] struct {
+	Status  int    `json:"status"`
+	Message string `json:"message"`
+	Data    T      `json:"response_data,omitempty"`
+}
